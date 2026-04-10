@@ -1,6 +1,6 @@
 import sqlite3
 
-CREATE_BEANS_TABLE = "CREATE TABLE beans (id INTEGER PRIMARY KEY, name TEXT, method TEXT, rating INTEGER)"
+CREATE_BEANS_TABLE = "CREATE TABLE IF NOT EXISTS beans (id INTEGER PRIMARY KEY, name TEXT, method TEXT, rating INTEGER)"
 
 INSERT_BEAN = "INSERT INTO beans (name, method, rating) VALUES (?, ?, ?):"
 
@@ -22,7 +22,7 @@ def create_tables(connection):
 
 
 
-def add_beans(connection, name, method, rating):
+def add_bean(connection, name, method, rating):
     with connection:
         connection.execute(INSERT_BEAN, (name, method, rating))
 
