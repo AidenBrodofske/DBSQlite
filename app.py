@@ -1,6 +1,5 @@
 import database
-#test
-#testing
+
 MENU_PROMPT = """-- Coffee Bean App --
 
 Please choose one of these options:
@@ -22,16 +21,20 @@ def menu():
         if user_input == "1":
             name = input("Enter bean name: ")
             method = input("Enter how you've prepared it: ")
-            rating = int(input("Enter your rating score (0-100)"))
+            rating = int(input("Enter your rating score (0-100): "))
 
             database.add_bean(connection, name, method, rating)
         elif user_input == "2":
             beans = database.get_all_beans(connection)
 
             for bean in beans:
-                print(bean)
+                print(f"{bean[1]} {bean[2]} - {bean[3]}/100")
         elif user_input == "3":
-            pass
+            name = input("Enter bean name to find: ")
+            beans = database.get_beans_by_name(connection. name)
+
+            for bean in beans:
+                print(f"{bean[1]} {bean[2]} - {bean[3]}/100")
         elif user_input == "4":
             pass
         else:
