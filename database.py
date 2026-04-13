@@ -39,3 +39,4 @@ def get_beans_by_name(connection, name):
 def get_best_preparation_for_bean(connection, name):
     with connection:
         return connection.execute(GET_BEST_PREPARATION_FOR_BEAN, (name,)).fetchone()
+        
